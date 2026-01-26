@@ -1,0 +1,23 @@
+[
+{
+"name": "Eiffel Tower",
+"location": "Paris, France",
+"description": "Famous iron tower in the heart of Paris",
+"imageUrl": "https://images.unsplash.com/photo-1511739001486-6bfe10ce785f?w=600",
+"detailedDescription": "The Eiffel Tower is a wrought-iron lattice tower on the Champ de Mars in Paris, France. It is named after the engineer Gustave Eiffel, whose company designed and built the tower. Constructed from 1887 to 1889, it was initially criticised by some of France's leading artists and intellectuals for its design, but it has become a global cultural icon of France and one of the most recognizable structures in the world. This is an amazing tourist place worth visiting! You can spend a great time here and experience the local culture."
+},
+{
+"name": "Great Wall of China",
+"location": "Beijing, China",
+"description": "The longest wall in the world",
+"imageUrl": "https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=600",
+"detailedDescription": "The Great Wall of China is a series of fortifications that were built across the historical northern borders of ancient Chinese states and Imperial China as protection against various nomadic groups. Several walls were built from as early as the 7th century BC. The Great Wall stretches over 13,000 miles and is one of the most impressive architectural feats in human history. This is an amazing tourist place worth visiting! You can spend a great time here and experience the local culture."
+},
+{
+"name": "Taj Mahal",
+"location": "Agra, India",
+"description": "Beautiful white marble building",
+"imageUrl": "https://images.unsplash.com/photo-1564507592333-c60657eea523?w=600",
+"detailedDescription": "The Taj Mahal is an ivory-white marble mausoleum on the right bank of the river Yamuna in the Indian city of Agra. It was commissioned in 1632 by the Mughal emperor Shah Jahan to house the tomb of his favourite wife, Mumtaz Mahal. The Taj Mahal is widely considered one of the most beautiful buildings in the world and a symbol of India's rich history. This is an amazing tourist place worth visiting! You can spend a great time here and experience the local culture."
+}
+]

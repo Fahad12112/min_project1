@@ -1,30 +1,30 @@
+// lib/widgets/place_card.dart
 
 import 'package:flutter/material.dart';
+import 'package:min_project1/ place_model/place_model.dart';
 import 'package:min_project1/DetailScreen/DetailScreen.dart';
+import 'package:min_project1/app_colors/app_colors.dart';
+import 'package:min_project1/app_spacing/app_spacing.dart';
+import 'package:min_project1/navigation_extension/navigation_extension.dart';
+import 'package:min_project1/screen_size_extension/screen_size_extension.dart';
 
 class PlaceCard extends StatelessWidget {
-  final String name;
-  final String location;
-  final String description;
-  final String imageUrl;
+  final PlaceModel place;
 
   const PlaceCard({
     Key? key,
-    required this.name,
-    required this.location,
-    required this.description,
-    required this.imageUrl,
+    required this.place,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: AppColors.white,
         borderRadius: BorderRadius.circular(10),
         boxShadow: const [
           BoxShadow(
-            color: Colors.grey,
+            color: AppColors.shadowGrey,
             blurRadius: 5,
           ),
         ],
@@ -32,27 +32,30 @@ class PlaceCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          // Image using screen size extension
           Image.network(
-            imageUrl,
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.width * 0.5,
+            place.imageUrl,
+            width: context.screenWidth,
+            height: context.widthPercent(50),
             fit: BoxFit.cover,
             errorBuilder: (context, error, stackTrace) {
               return Container(
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.width * 0.5,
-                color: Colors.grey[300],
+                width: context.screenWidth,
+                height: context.widthPercent(50),
+                color: AppColors.grey300,
                 child: const Icon(Icons.image, size: 50),
               );
             },
           ),
 
-          const SizedBox(height: 10),
+          // Spacing using constants
+          AppSpacing.vertical10,
 
+          // Name
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
+            padding: AppSpacing.paddingHorizontal10,
             child: Text(
-              name,
+              place.name,
               style: const TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
@@ -60,49 +63,47 @@ class PlaceCard extends StatelessWidget {
             ),
           ),
 
-          const SizedBox(height: 5),
+          AppSpacing.vertical5,
 
+          // Location
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
+            padding: AppSpacing.paddingHorizontal10,
             child: Text(
-              location,
-              style: const TextStyle(color: Colors.grey),
+              place.location,
+              style: const TextStyle(color: AppColors.grey),
             ),
           ),
 
-          const SizedBox(height: 5),
+          AppSpacing.vertical5,
 
+          // Description
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: Text(description),
+            padding: AppSpacing.paddingHorizontal10,
+            child: Text(place.description),
           ),
 
-          const SizedBox(height: 10),
+          AppSpacing.vertical10,
 
+          // Explore Button using navigation extension
           Padding(
-            padding: const EdgeInsets.all(10),
+            padding: AppSpacing.paddingAll10,
             child: SizedBox(
               width: double.infinity,
               height: 45,
               child: ElevatedButton(
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => DetailScreen(
-                        name: name,
-                        location: location,
-                        imageUrl: imageUrl,
-                      ),
-                    ),
-                  );
+                  // Using navigation extension to push screen
+                  context.pushScreen(DetailScreen(place: place));
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.blue,
+                  backgroundColor: AppColors.primaryBlue,
                 ),
                 child: const Text(
                   'Explore',
-                  style: TextStyle(fontSize: 16, color: Colors.white),
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: AppColors.textWhite,
+                  ),
                 ),
               ),
             ),

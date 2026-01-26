@@ -1,49 +1,53 @@
+// lib/screens/detail_screen.dart
 
 import 'package:flutter/material.dart';
+import 'package:min_project1/ place_model/place_model.dart';
+import 'package:min_project1/app_colors/app_colors.dart';
+import 'package:min_project1/app_spacing/app_spacing.dart';
+import 'package:min_project1/screen_size_extension/screen_size_extension.dart';
 
 class DetailScreen extends StatelessWidget {
-  final String name;
-  final String location;
-  final String imageUrl;
+  final PlaceModel place;
 
   const DetailScreen({
     Key? key,
-    required this.name,
-    required this.location,
-    required this.imageUrl,
+    required this.place,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(name),
-        backgroundColor: Colors.blue,
+        title: Text(place.name),
+        backgroundColor: AppColors.primaryBlue,
       ),
       body: SingleChildScrollView(
         child: Column(
           children: [
+            // Image using screen size extension
             Image.network(
-              imageUrl,
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.width * 0.7,
+              place.imageUrl,
+              width: context.screenWidth,
+              height: context.widthPercent(70),
               fit: BoxFit.cover,
               errorBuilder: (context, error, stackTrace) {
                 return Container(
-                  width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.width * 0.7,
-                  color: Colors.grey[300],
+                  width: context.screenWidth,
+                  height: context.widthPercent(70),
+                  color: AppColors.grey300,
                   child: const Icon(Icons.image, size: 80),
                 );
               },
             ),
 
-            const SizedBox(height: 20),
+            // Spacing using constants
+            AppSpacing.vertical20,
 
+            // Name
             Padding(
-              padding: const EdgeInsets.all(15),
+              padding: AppSpacing.paddingAll15,
               child: Text(
-                name,
+                place.name,
                 style: const TextStyle(
                   fontSize: 26,
                   fontWeight: FontWeight.bold,
@@ -51,41 +55,44 @@ class DetailScreen extends StatelessWidget {
               ),
             ),
 
+            // Location
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15),
+              padding: AppSpacing.paddingHorizontal15,
               child: Row(
                 children: [
-                  const Icon(Icons.location_on, color: Colors.red),
-                  const SizedBox(width: 5),
+                  const Icon(Icons.location_on, color: AppColors.primaryRed),
+                  AppSpacing.horizontal5,
                   Text(
-                    location,
+                    place.location,
                     style: const TextStyle(fontSize: 18),
                   ),
                 ],
               ),
             ),
 
-            const SizedBox(height: 20),
+            AppSpacing.vertical20,
 
+            // Detailed Description
             Padding(
-              padding: const EdgeInsets.all(15),
+              padding: AppSpacing.paddingAll15,
               child: Container(
-                padding: const EdgeInsets.all(15),
+                padding: AppSpacing.paddingAll15,
                 decoration: BoxDecoration(
-                  color: Colors.blue.shade50,
+                  color: AppColors.lightBlue,
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child: const Text(
-                  'This is an amazing tourist place worth visiting! You can spend a great time here and experience the local culture.',
-                  style: TextStyle(fontSize: 16, height: 1.5),
+                child: Text(
+                  place.detailedDescription,
+                  style: const TextStyle(fontSize: 16, height: 1.5),
                 ),
               ),
             ),
 
-            const SizedBox(height: 20),
+            AppSpacing.vertical20,
 
+            // Save Place Button
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15),
+              padding: AppSpacing.paddingHorizontal15,
               child: SizedBox(
                 width: double.infinity,
                 height: 50,
@@ -95,19 +102,22 @@ class DetailScreen extends StatelessWidget {
                       const SnackBar(content: Text('Saved successfully!')),
                     );
                   },
-                  icon: const Icon(Icons.favorite, color: Colors.white),
+                  icon: const Icon(
+                    Icons.favorite,
+                    color: AppColors.textWhite,
+                  ),
                   label: const Text(
                     'Save Place',
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(color: AppColors.textWhite),
                   ),
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.red,
+                    backgroundColor: AppColors.primaryRed,
                   ),
                 ),
               ),
             ),
 
-            const SizedBox(height: 30),
+            AppSpacing.vertical30,
           ],
         ),
       ),

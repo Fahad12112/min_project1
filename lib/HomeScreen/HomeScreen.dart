@@ -1,6 +1,10 @@
+// lib/screens/home_screen.dart
 
 import 'package:flutter/material.dart';
 import 'package:min_project1/PlaceCard/place_card.dart';
+import 'package:min_project1/ places_data/places_data.dart';
+import 'package:min_project1/app_colors/app_colors.dart';
+import 'package:min_project1/app_spacing/app_spacing.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -10,37 +14,19 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Discover World'),
-        backgroundColor: Colors.blue,
+        backgroundColor: AppColors.primaryBlue,
       ),
-
-      body: ListView(
-        padding: const EdgeInsets.all(10),
-        children: [
-          PlaceCard(
-            name: 'Eiffel Tower',
-            location: 'Paris, France',
-            description: 'Famous iron tower in the heart of Paris',
-            imageUrl: 'https://images.unsplash.com/photo-1511739001486-6bfe10ce785f?w=600',
-          ),
-
-          const SizedBox(height: 15),
-
-          PlaceCard(
-            name: 'Great Wall of China',
-            location: 'Beijing, China',
-            description: 'The longest wall in the world',
-            imageUrl: 'https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=600',
-          ),
-
-          const SizedBox(height: 15),
-
-          PlaceCard(
-            name: 'Taj Mahal',
-            location: 'Agra, India',
-            description: 'Beautiful white marble building',
-            imageUrl: 'https://images.unsplash.com/photo-1564507592333-c60657eea523?w=600',
-          ),
-        ],
+      body: globalPlacesList.isEmpty
+          ? const Center(
+        child: CircularProgressIndicator(),
+      )
+          : ListView.separated(
+        padding: AppSpacing.paddingAll10,
+        itemCount: globalPlacesList.length,
+        separatorBuilder: (context, index) => AppSpacing.vertical15,
+        itemBuilder: (context, index) {
+          return PlaceCard(place: globalPlacesList[index]);
+        },
       ),
     );
   }
