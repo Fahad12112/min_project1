@@ -1,4 +1,3 @@
-// lib/screens/home_screen.dart
 
 import 'package:flutter/material.dart';
 import 'package:min_project1/PlaceCard/place_card.dart';

@@ -1,4 +1,3 @@
-// lib/widgets/place_card.dart
 
 import 'package:flutter/material.dart';
 import 'package:min_project1/ place_model/place_model.dart';
@@ -32,7 +31,6 @@ class PlaceCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Image using screen size extension
           Image.network(
             place.imageUrl,
             width: context.screenWidth,
@@ -48,10 +46,8 @@ class PlaceCard extends StatelessWidget {
             },
           ),
 
-          // Spacing using constants
           AppSpacing.vertical10,
 
-          // Name
           Padding(
             padding: AppSpacing.paddingHorizontal10,
             child: Text(
@@ -65,7 +61,6 @@ class PlaceCard extends StatelessWidget {
 
           AppSpacing.vertical5,
 
-          // Location
           Padding(
             padding: AppSpacing.paddingHorizontal10,
             child: Text(
@@ -76,7 +71,6 @@ class PlaceCard extends StatelessWidget {
 
           AppSpacing.vertical5,
 
-          // Description
           Padding(
             padding: AppSpacing.paddingHorizontal10,
             child: Text(place.description),
@@ -84,7 +78,6 @@ class PlaceCard extends StatelessWidget {
 
           AppSpacing.vertical10,
 
-          // Explore Button using navigation extension
           Padding(
             padding: AppSpacing.paddingAll10,
             child: SizedBox(
@@ -92,7 +85,6 @@ class PlaceCard extends StatelessWidget {
               height: 45,
               child: ElevatedButton(
                 onPressed: () {
-                  // Using navigation extension to push screen
                   context.pushScreen(DetailScreen(place: place));
                 },
                 style: ElevatedButton.styleFrom(

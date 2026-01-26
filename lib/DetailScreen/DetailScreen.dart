@@ -1,4 +1,3 @@
-// lib/screens/detail_screen.dart
 
 import 'package:flutter/material.dart';
 import 'package:min_project1/ place_model/place_model.dart';
@@ -24,7 +23,6 @@ class DetailScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            // Image using screen size extension
             Image.network(
               place.imageUrl,
               width: context.screenWidth,
@@ -40,10 +38,8 @@ class DetailScreen extends StatelessWidget {
               },
             ),
 
-            // Spacing using constants
             AppSpacing.vertical20,
 
-            // Name
             Padding(
               padding: AppSpacing.paddingAll15,
               child: Text(
@@ -55,7 +51,6 @@ class DetailScreen extends StatelessWidget {
               ),
             ),
 
-            // Location
             Padding(
               padding: AppSpacing.paddingHorizontal15,
               child: Row(
@@ -72,7 +67,6 @@ class DetailScreen extends StatelessWidget {
 
             AppSpacing.vertical20,
 
-            // Detailed Description
             Padding(
               padding: AppSpacing.paddingAll15,
               child: Container(
@@ -90,7 +84,6 @@ class DetailScreen extends StatelessWidget {
 
             AppSpacing.vertical20,
 
-            // Save Place Button
             Padding(
               padding: AppSpacing.paddingHorizontal15,
               child: SizedBox(

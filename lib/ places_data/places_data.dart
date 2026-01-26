@@ -1,29 +1,22 @@
-// lib/data/places_data.dart
 
 import 'dart:convert';
 import 'package:flutter/services.dart';
 import 'package:min_project1/ place_model/place_model.dart';
 
-// Global list of places
 List<PlaceModel> globalPlacesList = [];
 
-// Function to load places from JSON using fromJson method
 Future<void> loadPlacesData() async {
   try {
-    // Load JSON file from assets
     final String jsonString = await rootBundle.loadString('assets/data/places.json');
 
-    // Parse JSON string to List
     final List<dynamic> jsonList = json.decode(jsonString);
 
-    // Convert each JSON object to PlaceModel using fromJson
     globalPlacesList = jsonList.map((json) => PlaceModel.fromJson(json)).toList();
 
     print('✅ Successfully loaded ${globalPlacesList.length} places from JSON');
   } catch (e) {
     print('❌ Error loading places data: $e');
 
-    // Fallback: Create hardcoded data if JSON fails to load
     globalPlacesList = [
       PlaceModel(
         name: 'Eiffel Tower',

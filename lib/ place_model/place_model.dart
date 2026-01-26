@@ -1,4 +1,4 @@
-// lib/models/place_model.dart
+
 
 class PlaceModel {
   final String name;
@@ -15,7 +15,6 @@ class PlaceModel {
     required this.detailedDescription,
   });
 
-  // fromJson method to convert JSON to PlaceModel
   factory PlaceModel.fromJson(Map<String, dynamic> json) {
     return PlaceModel(
       name: json['name'] as String,
@@ -26,7 +25,6 @@ class PlaceModel {
     );
   }
 
-  // toJson method (optional but good practice)
   Map<String, dynamic> toJson() {
     return {
       'name': name,
